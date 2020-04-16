@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Entrenador{% endblock %}
+
+{% block body %}
+    <h1>Create new Entrenador</h1>
+
+    {{ include('entrenador/_form.html.twig') }}
+    <script>document.getElementById("entrenador_Foto").required = true;</script>
+
+    <a href="{{ path('entrenador_index') }}">back to list</a>
+{% endblock %}

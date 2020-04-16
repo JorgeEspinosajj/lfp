@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Estadio index{% endblock %}
+
+{% block body %}
+    <h1>Estadio index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Foto</th>
+                <th>Capacidad</th>
+                <th>Fecha_Ing</th>
+                <th>Ciudad</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for estadio in estadios %}
+            <tr>
+                <td>{{ estadio.id }}</td>
+                <td>{{ estadio.Nombre }}</td>
+                <td><img src="{{ asset('imgs/Estadios/'~estadio.Foto) }}" width="50px" height="50px" ></td>
+                <td>{{ estadio.Capacidad }}</td>
+                <td>{{ estadio.FechaIng ? estadio.FechaIng|date('Y-m-d') : '' }}</td>
+                <td>{{ estadio.Ciudad }}</td>
+                <td>
+                    <a href="{{ path('estadio_show', {'id': estadio.id}) }}">show</a>
+                    <a href="{{ path('estadio_edit', {'id': estadio.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('estadio_new') }}">Create new</a>
+{% endblock %}

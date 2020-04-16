@@ -1,0 +1,179 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LFJA
+{% endblock %}
+
+{% block body %}
+
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	.fa {
+ 
+  cursor: pointer;
+  user-select: none;
+}
+
+.fa:hover {
+  color: darkblue;
+}
+	</style>
+
+
+<div class="container d-flex justify-content-between" >
+  <div class="row">
+    <div class="col-6 col-md-4">
+     
+	<table class="table" id="clasificacion">
+				<thead>
+					<tr>
+						<th>Pos</th>
+						<th>Equipo</th>
+						<th>Puntos</th>
+						<th>GF</th>
+						<th>GC</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					{% for equipo in equipos|sort((a, b) => b.Puntos <=> a.Puntos) %}
+
+						<tr>
+							<td>{{ loop.index }}</td>
+							<td>
+							<img src="{{ asset('imgs/Escudos/'~equipo.Escudo) }}" style="background-color:transparent;width:30px;"></img>
+							{{ equipo.Nombre }}
+							</td>
+							<td>
+								{{ equipo.Puntos }}
+							</td>
+							<td>
+								{{ equipo.GolesFavor }}
+							</td>
+							<td>
+								{{ equipo.GolesContra }}
+							</td>
+						</tr>
+					</td>
+
+
+				</tbody>
+			</tr>
+		{% else %}
+			<tr>
+				<td colspan="2">no records found</td>
+			</tr>
+		{% endfor %}
+	</table>
+    </div>
+    <div class="col-6 col-md-4">
+			{% for comentario in comentarios %}
+<div class="card">
+  <div class="card-header">
+    {{ comentario.Autor}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ comentario.Autor.getRoles[0] }}</h5>
+    <p class="card-text">{{ comentario.Arg}}</p>
+
+	<p><a href="{{ path('like', {'id': comentario.id }) }}"><i class="fa fa-thumbs-up"></i></a>  Likes : {{ comentario.Likes }}</p>
+	
+   
+  </div>
+</div>
+
+{% endfor %}
+
+
+    </div>
+    <div class="col-sm">
+     
+			<table class="table" id="marcador" style="text-align:center;">
+		<tr>
+			<th colspan="4" style="text-align:center;">Último Partido</th>
+		</tr>
+
+		{% for partido in partidos %}
+			{% if loop.last %}
+				<tr>
+					<td>
+					<img src="{{ asset('imgs/Escudos/'~partido.getEquipoLocal().getEscudo()) }}" style="background-color:transparent;width:30px;"></img>
+					{{ partido.getEquipoLocal() }}
+					</td>
+				
+			
+			<td>{{ partido.getGolesLocal()}}</td>
+
+			<td>{{ partido.getGolesVisitante() }}</td>
+
+			<td>
+			{{ partido.getEquipoVisitante() }}
+			<img src="{{ asset('imgs/Escudos/'~partido.getEquipoVisitante().getEscudo()) }}" style="background-color:transparent;width:30px;"></img>
+			
+			</td>
+
+
+		</tr>
+
+		
+
+
+	{% endif %}
+	{% endfor %}
+</table>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

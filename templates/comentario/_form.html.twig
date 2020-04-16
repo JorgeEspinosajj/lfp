@@ -1,0 +1,16 @@
+
+    {{ form_start(form) }}
+  
+    <div class="card d-flex justify-content-center">
+  <h5 class="card-header">Autor : {{ app.user.username}}</h5>
+  <div class="card-body">
+    <h5 class="card-title">{{ app.user.getRoles[0] }}</h5>
+    <p class="card-text">
+    
+    {{form_row(form.arg)}}
+    </p>
+     <button class="btn btn-primary">{{ button_label|default('Redactar') }}</button>
+  </div>
+</div>
+ {{ form_end(form) }}  
+

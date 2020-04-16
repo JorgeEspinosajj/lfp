@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Equipo index
+{% endblock %}
+
+{% block body %}
+	<a href="{{ path('equipo_new') }}" style="background-color:white;">Create new</a>
+	<div class="row container">
+{% for x in equipos %}
+<div class="card col-md-4">
+  <img class="card-img-top" src="{{ asset('imgs/Escudos/'~x.Escudo) }}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{ x.Nombre }}</h5>
+    <p class="card-text">{{ x.Descripcion }}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+
+{% endfor %}
+</div>
+{% endblock %}

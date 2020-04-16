@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Estadio{% endblock %}
+
+{% block body %}
+    <h1>Estadio</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ estadio.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ estadio.Nombre }}</td>
+            </tr>
+            <tr>
+                <th>Foto</th>
+                <td>{{ estadio.Foto }}</td>
+            </tr>
+            <tr>
+                <th>Capacidad</th>
+                <td>{{ estadio.Capacidad }}</td>
+            </tr>
+            <tr>
+                <th>Fecha_Ing</th>
+                <td>{{ estadio.FechaIng ? estadio.FechaIng|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Ciudad</th>
+                <td>{{ estadio.Ciudad }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('estadio_index') }}">back to list</a>
+
+    <a href="{{ path('estadio_edit', {'id': estadio.id}) }}">edit</a>
+
+    {{ include('estadio/_delete_form.html.twig') }}
+{% endblock %}

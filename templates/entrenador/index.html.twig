@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entrenador index{% endblock %}
+
+{% block body %}
+<div class="row container">
+{% for entrenador in entrenadors %}
+<div class="card col-md-4">
+  <img class="card-img-top" src="{{ asset('imgs/Entrenadores/'~entrenador.Foto) }}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{ entrenador.Nombre }}</h5>
+    <p class="card-text">{{ entrenador.Nacionalidad }}</p>
+    <p class="card-text">{{ entrenador.Equipo }}</p>
+    <a href="{{ path('entrenador_edit', {'id': entrenador.id}) }}" class="btn btn-primary">Editar Entrenador</a>
+  </div>
+</div>
+
+
+{% endfor %}
+</div>
+{% endblock %}

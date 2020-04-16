@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Estadio{% endblock %}
+
+{% block body %}
+    <h1>Create new Estadio</h1>
+
+    {{ include('estadio/_form.html.twig') }}
+    <script>document.getElementById("estadio_Foto").required = true;</script>
+
+    <a href="{{ path('estadio_index') }}">back to list</a>
+{% endblock %}

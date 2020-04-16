@@ -1,0 +1,9 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div id="myProgress" >
+  <div id="myBar"></div>
+  
+</div>
+    <button class="btn" onclick="move()" >{{ button_label|default('Save') }}</button>
+   
+{{ form_end(form) }}
